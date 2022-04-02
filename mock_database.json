@@ -2,13 +2,5 @@
     {
         "name": "mango",
         "price": "1"
-    },
-    {
-        "name": "banana",
-        "price": "1"
-    },
-    {
-        "name": "pear",
-        "price": "1"
     }
 ]

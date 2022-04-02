@@ -11,7 +11,7 @@ def get_item():
     if 'name' not in args:
         return 'Missing name parameter', 400
     try:
-        return retrieve_item(args.get('name'))
+        return retrieve_item(args.get('name')), 200
     except NameError as e:
         return {}, 204
 
@@ -27,14 +27,21 @@ def post_item():
         return 'Missing price parameter', 400
     try:
         create_item(args.get('name'), args.get('price'))
-        return "Success", 201
+        return "Success, item added", 201
     except NameError as e:
         # do nothing, if we wanted to update the item we should be using a PUT request
         return "Item already exists", 409
      
 
 @item_bp.route('/', methods=['DELETE'])
-def delete_item(name):
+def delete_item():
     if len(request.headers['authorization'].split()[1]) != 20:
         return 'Unauthorized', 401
-    return ""
+    args = request.args
+    if 'name' not in args:
+        return 'Missing name parameter', 400
+    try:
+        remove_item(args.get('name'))
+        return "Success, item deleted", 204
+    except NameError as e:
+        return "Item was not found and cannot be deleted", 404

@@ -24,8 +24,13 @@ def create_item(name, price):
         json.dump(items_list, f, indent=4)
 
 
-def remove_item():
-    return ""
+def remove_item(name):
+    item = retrieve_item(name)
+    with open('mock_database.json') as f:
+        items_list = json.load(f)
+        items_list.remove(item)
+    with open('mock_database.json', 'w') as f:
+        json.dump(items_list, f, indent=4)
 
 
 # helpers
