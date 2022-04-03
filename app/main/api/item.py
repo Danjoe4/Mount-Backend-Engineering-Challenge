@@ -5,6 +5,7 @@ item_bp = Blueprint('item_bp', __name__)
 
 @item_bp.route('/', methods=['GET'])
 def get_item():
+    print(request.headers)
     if len(request.headers['authorization'].split()[1]) != 20:
         return 'Unauthorized', 401
     args = request.args

@@ -1,3 +1,4 @@
 /env
 /debug_log.log
 __pycache__/
+.pytest_cache/
