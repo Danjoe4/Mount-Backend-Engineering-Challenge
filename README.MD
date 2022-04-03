@@ -6,12 +6,17 @@ A note on testing, the design choice is highly workflow dependent. I decided tha
 
 ### to run ####
 clone the repo
-`python3 -m venv env (optional, but preferable if you don't want extra packages on your main system)`
+
+`python3 -m venv env` (optional, but preferable if you don't want extra packages on your main system)
+
 `pip install -r requirements.txt`
+
 `python3 wsgi.py`
 
 ### to test ####
 `python3 wsgi.py`
+
 take note of what port the app is running on, it should say 'Running on http://127.0.0.1:5000'
 make sure that the TESTING_URL variable in the test_item.py file matches
+
 `pytest`
